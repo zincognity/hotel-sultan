@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/index.css">
+    <title>Login - Sultán del Norte</title>
+</head>
+<body>
+    <header>
+    <section class="cuadro">
+        <p>¡Bienvenido al panel de control del hotel Sultan Del Norte! <span id="msg"> Este sitio solo es para personal autorizado.</span></p> 
+
+        <div class="cuadro-login" id="cuadro-login">
+            <div class="cuadro-texto">
+
+                <label for="login">
+                    <span>Inicio Sesión</span>
+                </label>
+                <input type="radio" id="login" name="group">
+                <label for="register">
+                    <span>Registrarse</span>
+                </label>
+                <input type="radio" id="register" name="group">
+
+                <div id="formu-login">
+                    <form id="login-form">
+                        <div>
+                            <input id="user" type="text" placeholder="Usuario" required>
+                        </div>
+                        <div>
+                            <input id="password" type="password" placeholder="Contraseña" required>
+                        </div>
+    
+                        <button type="submit" href="#">Ingresar</button>
+    
+                    </form>
+                </div>
+
+                <div id="formu-register">
+                    <form id="signup-form">
+                        <div>
+                            <input id="usersu" type="text" placeholder="Usuario" required>
+                        </div>
+                        <div>
+                            <input id="passwordsu" type="password" placeholder="Contraseña" required>
+                        </div>
+                        <div>
+                            <input id="confirmpasswordsu" type="password" placeholder="Confirmar Contraseña" required>
+                        </div>
+    
+                        <button type="submit" href="#">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <form id="logout">
+            <button type="submit" id="logout-button">Cerrar sesión</button>
+        </form>
+    </section>
+    </header>
+
+    <script type="module" src="../database/firebase.js"></script>
+    <script type="module" src="../accounts/account.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+body{
+    background-image:url(/imagenes/Fondo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 180px auto;
+}
+
+.cuadro {
+    position: absolute;
+    transform: translate(-50%, -12%);
+    border: 1px solid rgb(130, 179, 40);
+    width: 800px;
+    height: 400px;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.636);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.cuadro p {
+    color: red;
+    width: 480px;
+    height: 200px;
+    font-size: 30px;
+    display: grid;
+    font-weight: bold;
+    margin: auto;
+    align-items: center;
+}
+
+#msg {
+    font-style: italic;
+    font-size: 15px;
+}
+
+.cuadro-login {
+    color: blue;
+    width: 300px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.636);
+    text-align: center;
+    border: 2px solid;
+    border-radius: 10px;
+}
+
+.cuadro-texto {
+    border-bottom: 10px solid rgb(193, 170, 0);
+    width: 100%;
+    height: 30%;
+    display: grid;
+    place-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background-color: #1d1d1dcd;
+}
+
+.cuadro-texto label, .cuadro-texto input {
+    padding-top: 5%;
+}
+
+/* Inputs */
+.cuadro-login input {
+    position: relative;
+    width: 80%;
+    display: block;
+    margin: 15px auto;
+    font-size: 17px;
+    color: #fff;
+    padding: 12px;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #6c6c6c;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+.cuadro-login input:focus{
+    outline: none;
+    background: rgba(3, 3, 3, 0.329);
+    color: black;
+}
+
+.cuadro-login button{
+    text-align: center;
+    background: rgba(54, 240, 48, 0.678);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    color: black;
+    display: block;
+    position: relative;
+    width: 60%;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.cuadro-login button:hover {
+    color: #fff;
+    background-color: rgb(30, 142, 60);
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20%;
+}
+
+#formu-login {
+	display:block;
+}
+
+#formu-register, #register, #login {
+    display: none;
+}
+
+input#login:checked ~ div#formu-login {
+	display:block;
+}
+
+input#register:checked ~ div#formu-register {
+	display:block;
+}
+
+input#register:checked ~ div#formu-register{
+    transform: translate(0%, -10%);
+    -webkit-transform: translate(0%, -10%);
+    -moz-transform: translate(0%, -10%);
+    -ms-transform: translate(0%, -10%);
+    -o-transform: translate(0%, -10%);
+}
+
+input#register:checked ~ div#formu-login {
+	display:none;
+}

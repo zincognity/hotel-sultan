@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/principal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <title>Panel - Gestión de habitaciones</title>
+</head>
+<body>
+    <header class="cabeza">
+        <img class="logo" src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/Imagen%20de%20WhatsApp%202023-06-02%20a%20las%2011.02.48.jpg?v=1685721858878" alt="">
+        <div class="perfil">
+            <img class="perfil-user" src="https://cdn.glitch.global/c477e076-12bd-4167-8037-3b9f0bb11440/user.svg?v=1685030045895" alt="">
+            <!-- <div class="cuadro-perfil"> -->
+                <div class="card-container">
+                    <div class="card-header">
+                      <div class="employee-number">123456</div>
+                      <div class="job-title">Administrador</div>
+                      <img class="profile-image" src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/perfiljuan.jpeg?v=1686436308602" alt="Profile Picture">
+                      <div class="full-name">Juan Suyon</div>
+                    </div>
+                    <div class="card-description">
+                      <!-- <span>Descripción:</span> -->
+                      <p>Administrador del hotel, Encargado de gestionar cada cosa que ocurre dentro de él</p>
+                    </div>
+                    <div class="card-footer">
+                      <!-- <img class="logo2" src="imagenes/Logo.jpg" alt="Logo"> -->
+                      <button class="logout-button">Cerrar sesión</button>
+                    </div>
+                  <!-- </div> -->
+            </div>
+
+        </div>
+    </header>
+
+
+  <header class="cuerpo_entero">
+    <div class="menu">
+        <section class="menu-despegable">
+        <div class="btn-menu">
+            <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/menu.svg?v=1685721775342" alt="">
+        </div>
+       <ul>
+            <li class="minimenu minimenu_1">
+                <a class="txtmenu" href="https://hotel-sultan.glitch.me/inicio.html">Inicio</a>
+            </li>
+            <li class="minimenu menu_2">
+                <a class="txtmenu" href="#">Estadística del hotel</a>
+            </li>
+
+            <li class="minimenu menu_3">
+                <a class="txtmenu" class="txtmenu_3" href="#">Gestión de habitaciones
+                    <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/right.svg?v=1686868536602" alt="">
+                 </a>
+                <ul class="submenu-gestion">
+                    <li class="submenu_item"><a class="txtsubmenu-gestion" href="#">Disponibles</a></li>
+                    <li class="submenu_item"><a class="txtsubmenu-gestion" href="#">Reservadas</a></li>
+                    <li class="submenu_item"><a class="txtsubmenu-gestion" href="#">Ocupadas</a></li>
+                    <li class="submenu_item"><a class="txtsubmenu-gestion" href="#">Mantenimiento</a></li>
+                </ul>
+            </li> 
+
+            <li class="minimenu menu_4">
+                <a class="txtmenu" href="#">Servicio de reserva</a>
+            </li>
+
+            <li class="minimenu menu_5">
+                <a class="txtmenu" href="#">Reseñas</a>
+            </li>
+
+            <li class="minimenu menu_6">
+                <a class="txtmenu" href="#">Administración de empleados</a>
+            </li>
+
+            <li class="minimenu menu_7">
+                <a class="txtmenu" href="#">Acceso y configuración
+                    <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/right.svg?v=1686868536602" alt="">
+                </a>
+                
+                <ul class="submenu-acceso">
+                    <li class="submenu_item"><a class="txtsubmenu-acceso" href="#">Acceso</a></li>
+                    <li class="submenu_item"><a class="txtsubmenu-acceso" href="#">configuración</a> </li>
+                </ul>
+            </li>
+            
+       </ul>
+    </section>
+
+    <section>
+a
+    </section>
+    
+    </div>
+
+    <header class="contenido_fuera">
+      <!-- <br> <br> -->
+      <!-- !Esta será la pantalla principal de cada sección! -->
+      <div class="cuadro_gestion">
+        <div class="buscador_habitaciones">
+          <span>Seleccionar tipo de habitaciones:</span>
+          <div class="opciones">
+            <input type="checkbox" id="opcion1" value="" checked>
+            <label class="opcion_todos" for="opcion1">Todos</label>
+            <input type="checkbox" id="opcion2" value="DIS">
+            <label class="opcion_dis" for="opcion2">Disponible</label>
+            <input type="checkbox" id="opcion3" value="RES">
+            <label class="opcion_res" for="opcion3">Reservado</label>
+            <input type="checkbox" id="opcion4" value="MAN">
+            <label class="opcion_man" for="opcion4">Mantenimiento</label>
+            
+          </div>
+        </div>
+        
+  
+        <div class="cuadro_de_cuadros">
+       
+          <div class="box cuadro1 RES">
+            <div class="numero">
+              <span>N°| 01</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Individual</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c1.png?v=1686868531800" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Reservado</span>
+            </div>
+
+            <div class="cuadro-extra">
+              <div class="CuadroExtra_DIS">
+                <div class="registro">
+                  <span>Nuevo Registro</span>
+                </div>
+
+                <div class="Cuadro_info">
+                  <div class="Cuadro_infohabitacion">
+                    <div>N° Habitación</div>
+                    <div>Disponible</div>
+                    <div>Foto de la cama Individual/duo/matrimonial</div>
+                    <div>Descripción del cuarto</div>
+                    <div>Precio</div>
+                  </div>
+                  <!-- <p>Información aparteee</p> -->
+                  <div class="Cuadro_infoCliente">
+                    <div>Nombre completo</div>
+                    <div>DNI</div>
+                    <div>Fecha de entrada</div>
+                    <div>Fecha de salida</div>
+                  </div>
+                </div>
+
+                  <div class="CIC_botones">
+                    <button class="CIC-btn1">Retroceder</button>
+                    <button class="CIC-btn2">Proceder Registro</button>
+                  </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="box cuadro2 DIS">
+            <div class="numero">
+              <span>N°| 02</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Duo</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c2.png?v=1686868532575" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Disponible</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 MAN">
+            <div class="numero">
+              <span>N°| 03</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Matrimonial</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c3-Black.png?v=1686868531437" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Mantenimiento</span>
+            </div>
+          </div>
+
+          <div class="box cuadro1 DIS">
+            <div class="numero">
+              <span>N°| 04</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Duo</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c2.png?v=1686868532575" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Disponible</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 MAN">
+            <div class="numero">
+              <span>N°| 05</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Matrimonial</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c3-Black.png?v=1686868531437" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Mantenimiento</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 RES">
+            <div class="numero">
+              <span>N°| 06</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Individual</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c1.png?v=1686868531800" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Reservado</span>
+            </div>
+          </div>
+        
+          <div class="box cuadro1 MAN">
+            <div class="numero">
+              <span>N°| 07</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Individual</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c1-Black.png?v=1686868532238" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Mantenimiento</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 RES">
+            <div class="numero">
+              <span>N°| 08</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Duo</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c2.png?v=1686868532575" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Reservado</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 DIS">
+            <div class="numero">
+              <span>N°| 09</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Matrimonial</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c2.png?v=1686868532575" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Disponible</span>
+            </div>
+          </div>
+
+          <div class="box cuadro1 RES">
+            <div class="numero">
+              <span>N°| 10</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Individual</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c1.png?v=1686868531800" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Reservado</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 DIS">
+            <div class="numero">
+              <span>N°| 11</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Duo</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c2.png?v=1686868532575" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Disponible</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 MAN">
+            <div class="numero">
+              <span>N°| 12</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Matrimonial</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c3-Black.png?v=1686868531437" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Mantenimiento</span>
+            </div>
+          </div>
+
+          <div class="box cuadro1 DIS">
+            <div class="numero">
+              <span>N°| 13</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Duo</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c2.png?v=1686868532575" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Disponible</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 MAN">
+            <div class="numero">
+              <span>N°| 14</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Matrimonial</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c3-Black.png?v=1686868531437" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Mantenimiento</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 RES">
+            <div class="numero">
+              <span>N°| 15</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Individual</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c1.png?v=1686868531800" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Reservado</span>
+            </div>
+          </div>
+        
+          <div class="box cuadro1 MAN">
+            <div class="numero">
+              <span>N°| 16</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Individual</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c1-Black.png?v=1686868532238" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Mantenimiento</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 RES">
+            <div class="numero">
+              <span>N°| 17</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Duo</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c2.png?v=1686868532575" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Reservado</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 DIS">
+            <div class="numero">
+              <span>N°| 18</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Matrimonial</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c2.png?v=1686868532575" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Disponible</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 RES">
+            <div class="numero">
+              <span>N°| 19</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Duo</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c2.png?v=1686868532575" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Reservado</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 DIS">
+            <div class="numero">
+              <span>N°| 20</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Matrimonial</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c2.png?v=1686868532575" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Disponible</span>
+            </div>
+          </div>
+
+          <div class="box cuadro1 MAN">
+            <div class="numero">
+              <span>N°| 21</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Individual</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c1-Black.png?v=1686868532238" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Mantenimiento</span>
+            </div>
+          </div>
+            
+          <div class="box cuadro2 DIS">
+            <div class="numero">
+              <span>N°| 22</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Matrimonial</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c2.png?v=1686868532575" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Disponible</span>
+            </div>
+          </div>
+
+          <div class="box cuadro1 MAN">
+            <div class="numero">
+              <span>N°| 23</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Individual</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c1-Black.png?v=1686868532238" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Mantenimiento</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 RES">
+            <div class="numero">
+              <span>N°| 24</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Duo</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c2.png?v=1686868532575" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Reservado</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 MAN">
+            <div class="numero">
+              <span>N°| 25</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Matrimonial</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c3-Black.png?v=1686868531437" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Mantenimiento</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 RES">
+            <div class="numero">
+              <span>N°| 26</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Duo</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c2.png?v=1686868532575" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Reservado</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 DIS">
+            <div class="numero">
+              <span>N°| 27</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Duo</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c2.png?v=1686868532575" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Disponible</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 RES">
+            <div class="numero">
+              <span>N°| 28</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Duo</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c2.png?v=1686868532575" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Reservado</span>
+            </div>
+          </div>
+
+          <div class="box cuadro2 DIS">
+            <div class="numero">
+              <span>N°| 29</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Matrimonial</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c2.png?v=1686868532575" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Disponible</span>
+            </div>
+          </div>
+
+          <div class="box cuadro1 MAN">
+            <div class="numero">
+              <span>N°| 30</span>
+            </div>
+            <div class="info">
+              <p class="tipo">Individual</p>
+              <div class="cama">
+                <img src="https://cdn.glitch.global/8f349731-33d7-4652-b4e2-171cd42482ce/c1-Black.png?v=1686868532238" alt="bed">
+              </div>
+            </div>
+            <div class="estado">
+              <span>Mantenimiento</span>
+            </div>
+          </div>
+         
+
+        
+      </div>
+    </header>
+
+
+  </header>
+  a
+ 
+      <script src="principal.js"></script>
+
+</body>
+</html>

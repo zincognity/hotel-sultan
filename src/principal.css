@@ -1,0 +1,723 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+
+}
+body {
+  background-color: #ffc55984;
+  overflow: hidden;
+  height: 100%;
+  border: px solid rebeccapurple;
+}
+
+.cabeza {
+  border: 1px solid black;
+  height: 100px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: rgb(152, 59, 59);
+  
+  
+}
+
+.logo {
+  width: 100px;
+  margin-left: 10px;
+}
+  /* Boton de Perfil */
+  /* Estilos */
+  .perfil{
+      width: 50px;
+      position: absolute;
+      right: 80px;
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      background-color: #fff;
+      border-radius: 45%;
+      -webkit-border-radius: 45%;
+      -moz-border-radius: 45%;
+      -ms-border-radius: 45%;
+      -o-border-radius: 45%;
+  }
+
+  .perfil-user {
+  width: 40px;
+  }
+
+      /* Esto es la parte para que al pasar el mouse por el perfil se abrá un cuadro sin información escrita */
+      .perfil:hover .card-container {
+          display: block;
+          position: absolute;
+          top: 40px;
+          width: 250px;
+          height: 308px;
+          right: .1px;
+          background-color: #fff;
+          border: 3px solid black;
+          /* border: 1px solid black;
+          display: grid;
+          place-items: center;
+          text-align: center; */
+      }
+
+      .card-container {
+          display: none;
+          z-index: 10;
+      }
+
+      /* diseño perfil */
+      /* .cuadro_perfil {
+          border: 1px solid black;
+          width: 200px;
+          height: 300px;
+
+      } */
+
+
+
+      .card-container {
+          width: 200px;
+          height: 300px;
+          background-color: #ffffff;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          /* padding: 5px; */
+          text-align: center;
+          -webkit-border-radius: 8px;
+          -moz-border-radius: 8px;
+          -ms-border-radius: 8px;
+          -o-border-radius: 8px;
+      }
+        
+        .card-header {
+          position: relative;
+          border: 1px solid black;
+          background-color: #a52525;
+        }
+        
+        .employee-number {
+          position: absolute;
+          top: 0;
+          left: 0;
+          font-size: 15px;
+          font-weight: bold;
+          color: #ffffff;
+        }
+
+        .job-title {
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-size: 15px;
+          font-weight: bold;
+          color: #ffffff;
+        }
+        
+        .profile-image {
+              border: 1px solid black;
+              width: 100px;
+              height: 100px;
+              border-radius: 50%;
+              margin: 20px auto;
+              background-color : #FFF;
+              display: block;
+              border: 2px solid #fff;
+              -webkit-border-radius: 50%;
+              -moz-border-radius: 50%;
+              -ms-border-radius: 50%;
+              -o-border-radius: 50%;
+          }
+
+        
+        .full-name {
+          font-size: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+          color: #fff;
+        }
+        
+        .card-description {
+          border: 1px solid black;
+          /* width: 198px; */
+          height: 90px;
+          font-size: 13px;
+          margin-bottom: 0.5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .card-footer {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .logo2 {
+          width: 80px;
+          height: 50px;
+          margin-right: auto;
+        }
+        
+        .logout-button {
+          background-color: #ff0000;
+          color: #ffffff;
+          border: none;
+          border-radius: 4px;
+          padding: 10px 20px;
+          margin-top: 7px;
+          cursor: pointer;
+          -webkit-border-radius: 4px;
+          -moz-border-radius: 4px;
+          -ms-border-radius: 4px;
+          -o-border-radius: 4px;
+}
+        
+
+
+
+/* Menú de Inicio */
+  /* Función para abrir el cuadro del menu */
+  
+  /* Espacio original que embarca todo */
+  .contenido_fuera.active {
+      margin-left: 300px;
+  }
+
+  .menu-despegable {
+      width: 250px;
+  }
+
+  .menu {
+      position: fixed;
+      border: 1px solid black;
+      width: 250px;
+      height: 86vh;
+      background-color: rgb(43, 43, 43);
+      left: -250px;
+      z-index: 30;
+      transition: 0.3s;
+      -webkit-transition: 0.3s;
+      -moz-transition: 0.3s;
+      -ms-transition: 0.3s;
+      -o-transition: 0.3s;
+}
+
+  .menu.active {
+      left: 0;
+  }
+
+  .btn-menu {
+      position: absolute;
+      left: 260px; 
+      cursor: pointer;
+  }
+
+
+  /* Estilos del menú en general */
+  
+
+  /* Pequeña función que hace que el submenu de gestión no se vaya a la izquierda XD */
+  .minimenu {
+      display: flex;
+  }
+
+  .menu_3 {
+      display: block;
+  }
+
+  .menu_3 ul {
+      /* display: none; */
+      list-style-type: none;
+  }
+  
+  .menu_3 img {
+      margin-left: 5px;
+  }
+  
+  /* hasta aca xd */
+
+  .btn-menu img {
+      width: 30px;
+  }
+
+  .minimenu {
+      justify-content: center ;
+      align-items: center;
+      border: 1px solid #929292;
+      /* height: 60px; */
+  }
+
+      /* submenus del submenu gestion */
+      .submenu-gestion {
+          background-color: #0000007c;
+          border: 1px solid wheat;
+          /* height: 80px; */
+      }
+      .submenu_item {
+          /* border-left: 1px solid wheat; */
+
+          /* border: 1px solid rebeccapurple; */
+      }
+
+  
+      .txtsubmenu-gestion {
+          display: flex;
+          color: #939393;
+          margin: 2.50px 0;
+          /* border: 1px solid rosybrown; */
+      }
+          .txtsubmenu-gestion:hover {
+              border-left: 2px solid wheat;
+          }
+      
+
+
+  .minimenu:hover {
+      background-color: #444444;
+  }
+
+
+
+  /* submenu de gestion */
+
+  .menu_3 .submenu-gestion {
+      display: none;
+      padding-left: 30px;
+  }
+
+  /* Estilos para el submenú activo */
+  .submenu-gestion.active {
+      display: block;
+  }
+
+  .menu_3 img {
+      margin-right: 30px;
+  }
+
+  .txtmenu {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      /* color: #000; */
+      cursor: pointer;
+  }
+  
+  /* submenu de acceso y configuración */
+  .menu_7 .submenu-acceso {
+      display: none;
+      padding-left: 30px;
+  }
+
+  .submenu-acceso.active {
+      display: block;
+  }
+
+  .txtsubmenu-acceso {
+      display: flex;
+      color: #939393;
+      margin: 2.50px 0;
+  }
+
+  .menu_7 {
+      display: block;
+  }
+
+  .menu_7 img {
+      margin-right: 30px;
+  }
+
+          /* submenus del submenu acceso */
+          .submenu-acceso {
+              background-color: #0000007c;
+              border: 1px solid wheat;
+              /* height: 80px; */
+          }
+          .submenu_item {
+              /* border-left: 1px solid wheat; */
+  
+              /* border: 1px solid rebeccapurple; */
+          }
+  
+      
+          .txtsubmenu-acceso {
+              display: flex;
+              color: #939393;
+              margin: 2.50px 0;
+              /* border: 1px solid rosybrown; */
+          }
+              .txtsubmenu-acceso:hover {
+                  border-left: 2px solid wheat;
+              }
+          
+
+
+.txtmenu {
+  color: #fff;
+  height: 50px;
+}
+
+.txtmenu_3 {
+  margin-left:-1000px;
+}
+/* Aca termina todo el menu despegable */
+
+
+
+
+/* Contenido fuera del menu - pantalla principal */
+  .cuerpo_entero {
+      border: 1px solid rebeccapurple;
+      /* background-color: rgba(199, 197, 197, 0.359); */
+      /*width: 400px;
+      */height: 86vh;
+      transition: 0.3s;
+      -webkit-transition: 0.3s;
+      -moz-transition: 0.3s;
+      -ms-transition: 0.3s;
+      -o-transition: 0.3s;
+  }
+
+  .cuadro_gestion {
+      border: 1px solid black;
+
+  }
+
+  .contenido_fuera {
+      /* width: 300px; */
+      height: 100%;
+      border: 1px solid black;
+      display: block;    
+      transition: 0.3s;
+      overflow-y: scroll;
+      z-index: 20;
+
+
+  }
+
+
+  /* diseño de boton de buscador */
+  .buscador_habitaciones {
+      border: 1px solid black;
+      height: 80px;
+      text-align: center;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      font-size: 17px;
+  }
+
+  .opciones_habitaciones {
+      
+  }
+
+  .opciones {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .opciones input[type="checkbox"] {
+      display: none;
+    }
+    
+    .opciones label {
+      padding: 8px 16px;
+      background-color: #f0f0f088;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin: 4px;
+      cursor: pointer;
+    }
+    
+    .opciones input[type="checkbox"]:checked + .opcion_dis {
+      background-color: #0a6610ca;
+      color: #fff;
+      box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.342);
+
+    }
+    
+    .opciones input[type="checkbox"]:checked + .opcion_todos {
+      background-color: #000;    
+      color: #fff;
+      box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.342);
+
+  }
+    
+    .opciones input[type="checkbox"]:checked + .opcion_res {
+      background-color: #a22222d0;
+      color: #fff;
+      box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.342);
+    }
+    
+    .opciones input[type="checkbox"]:checked + .opcion_man {
+      background-color: #ffd000ac;
+      color: #000;
+      box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.342);
+    }
+    
+    
+
+  /* Parte de cuadros, gestion de habitaciones */
+  .cuadro_de_cuadros {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  }
+
+  .box {
+      width: 300px;
+      height: 100px;
+      padding: 10px;
+      margin: 10px 20px;
+      background-color: gainsboro;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .box:hover .cama {
+      margin-top: 5px;
+    }
+    
+    .cuadro1 {
+      width: 300px;
+      height: 100px;
+      border: 1px solid #ccc;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .RES {
+      background-color: #850f0f;
+      color: #fff;
+    }
+    
+    .DIS {
+      background-color: #0a6610;
+      color: #fff;
+    }
+    
+    .MAN {
+      background-color: #ffd000;
+    }
+    
+    .numero {
+      position: absolute;
+      font-weight: bold;
+    }
+    
+    .info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    
+    .tipo {
+      font-weight: bold;
+      text-align: right;
+    }
+    
+    .cama {
+      display: flex;
+      justify-content: flex-end;
+    }
+    
+    .cama img {
+      width: 60px;
+    }
+    
+    .estado {
+      text-align: center;
+      font-weight: bold;
+      border: 1px solid black;
+    }
+    
+    .cuadro_de_cuadros {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    
+  /* Diseño del cuadro extra con información adicional acerca de las habitaciones */
+    .cuadro-extra {
+      display: none; /* Oculta el cuadro de información extra por defecto */
+      background-color: #f0f0f0;
+      padding: 10px;
+      margin-top: 10px;
+      /* estilo */
+      position: absolute;
+      left: 0;
+      top: -100px;
+      width: 100%;
+      height: calc(100% + 100px);
+      background-color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(5px);
+      z-index: 40;
+      cursor: auto;
+    }
+    /* Muestra el cuadro de información extra cuando el cuadro está activo con el ".active"*/
+    .box.active .cuadro-extra {
+      display: block; 
+    }
+
+    .CuadroExtra_DIS {
+      color: #000;
+      border: 1px solid black;
+      width: 70%;
+      height: 500px;
+      position: relative;
+      top: 50px;
+      left: 13%;
+      }
+
+    .registro {
+        border: 1px solid black;
+        height: 40px;
+        background-color: #fff;
+        background: linear-gradient(to top, rgba(7, 7, 7, 0.139), rgba(255, 255, 255, 0.991));
+      }
+
+    .Cuadro_info {
+      display: flex;
+      height: 400px;
+      border: 1px solid black;
+    }
+
+    .Cuadro_infohabitacion {
+      border: 1px solid black;
+      height: 100px;
+      
+    }
+
+    .Cuadro_infoCliente {
+      border: 1px solid black;
+      height: 100px;
+
+    }
+
+    .CIC_botones {
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      height: 57px;
+      background-color: rgba(255, 0, 0, 0.215);
+    }
+    
+    .CIC-btn1 {
+      height: 50px;
+      width: 100px;
+      position: absolute;
+    }
+    
+    .CIC-btn2 {
+      height: 50px;
+      width: 150px;
+      position: absolute;
+      right: 0;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ACA YA CAMBIE TODO XD */
+
+
+
+
+/* .acordeon .contenido {
+  display: none;
+}
+
+.acordeon .opcion input[type="checkbox"]:checked ~ .contenido {
+  display: block;
+} */
+
+.container {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #f1f1f1;
+  transition: transform 0.3s;
+  -webkit-transition: transform 0.3s;
+  -moz-transition: transform 0.3s;
+  -ms-transition: transform 0.3s;
+  -o-transition: transform 0.3s;
+}
+
+.content {
+  margin-left: 200px;
+  padding: 20px;
+  transition: margin-left 0.3s;
+}
+
+.menuu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menuu li {
+  padding: 10px;
+}
+
+.toggle-button {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .content {
+    margin-left: 0;
+  }
+
+  .toggle-button {
+    display: block;
+  }
+}
+
+
+
+
+
