@@ -274,6 +274,7 @@ onAuthStateChanged(auth, async (user) => {
                 <div class="habitaciones-detalles">
                     <div>
                         <h5>Entrar como:</h5>
+                        poto
                         <p>Precio: </p>
                         <p>Descripción: </p>
                         <p>Estado: </p>
