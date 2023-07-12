@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Inter:wght@200;500;700&display=swap');
+* {
+    text-decoration: none;
+}
 body::-webkit-scrollbar {
     width: 10px;
     background: #d8400e62;
@@ -130,30 +135,95 @@ img {
 }
 
 .contenedor{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+    /* height: 1000px;
+    background-color: #232f4b;
     padding: 10px;
     position: relative;
     min-height: 585px;
+    display: ; */
 }
 
 .titulo-habitaciones{
     text-align: center;
+    margin-top: 15px;
+    /* border: 1px solid black; */
+    width: 1000vh;
+    padding: 0;
+    font-family: 'Caprasimo', cursive;
 }
 
 .habitaciones-datos{
     border: 2px solid;
-    width: 30%;
+    width: 400px;
     height: 300px;
     min-width: 300px;
     float: left;
-    margin: 1.6%;
-    align-items: center;
+    margin: 20px;
     border-radius: 10px;
-    padding: 10px;
+    padding: 10px;  
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+
+    place-content: center; 
+    place-items: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+@media 800px {
+    
 }
 
 .habitaciones-detalles{
     display: flex;
-    padding: 10px;
+    /* align-items: flex-end; */
+    padding: 15px;
+    width: 380px;
+    min-height: 220px;
+    max-height: 260px;
+}
+
+.img-habitaciones {
+    margin-left: 50px;
+    position: relative;
+    right: 0;
+    /* justify-content: flex-end; */
+}
+
+.habitaciones-datos:hover .img-habitaciones {
+    margin-top: 3px;
+    /* border: 1px solid beige; */
+}
+
+
+.habitaciones-datos:hover .img-habitaciones {
+ 
+    animation-name: img-habitaciones;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  
+    -webkit-animation-name:img-habitaciones;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+}
+
+
+  
+  @keyframes img-habitaciones {  
+    0% { opacity: 1.0; }
+     50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+  }
 }
 
 .principal {

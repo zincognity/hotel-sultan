@@ -168,7 +168,7 @@ const setupHabitaciones = (habitaciones, datos) => {
                             <p>Estado: ${habitacionlist.disponibilidad}</p>
                         </div>
                         <div>
-                            <img src="${imgurl}" alt="">
+                            <img class="img-habitaciones asd1" src="${imgurl}" alt="">
                         </div>
                     </div>
                 </div>
@@ -274,7 +274,7 @@ onAuthStateChanged(auth, async (user) => {
                 <div class="habitaciones-detalles">
                     <div>
                         <h5>Entrar como:</h5>
-                        potoaa
+                        
                         <p>Precio: </p>
                         <p>Descripción: </p>
                         <p>Estado: </p>
