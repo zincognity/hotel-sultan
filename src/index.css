@@ -127,15 +127,12 @@ img {
     width: 100px;
     height: 100px;
     margin-left: 20px;
-    display: flex;
 }
-
-
-
 
 .contenedor{
     padding: 10px;
     position: relative;
+    min-height: 585px;
 }
 
 .titulo-habitaciones{
@@ -165,4 +162,8 @@ img {
     align-items: center;
     display: flex;
     height: 500px;
+}
+
+.nav {
+    padding: 100px;
 }

@@ -57,6 +57,7 @@ logout.addEventListener("click", (e) => {
     signOut(auth)
         .then(() => {
             console.log("Se ha cerrado sesión");
+            location.reload();
         })
         .catch((error) => {
             console.log("El usuario no se pudo registrar", error)
@@ -93,41 +94,38 @@ const setupHabitaciones = (habitaciones, datos) => {
         datos.forEach( async (reservas) => {
             const reserva = reservas.data();
             const div = `
-                <div class="modal fade" id="datos-habitacion-${reservas.id}"tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="datos-habitacion-${reservas.id}"tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h3>Detalles</h3>
+                                <h3>Habitación Nº${reservas.id}</h3>
                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div id="aviso-reservas"></div>
                             <div class="modal-body">
                                 <form id="_${reservas.id}">
 
-                                    <label for="habitacion-${reservas.id}">Habitación:</label>
-                                    <input type="text" id="reserva-hab-${reservas.id}" class="form-control mb-3" value="${reservas.id}" required>
-
                                     <label for="nombres-${reservas.id}">Nombres:</label>
-                                    <input type="text" id="reserva-nom-${reservas.id}" class="form-control mb-3" value="${reserva.nombre}" required>
+                                    <input type="text" id="reserva-nom-${reservas.id}" class="form-control mb-3" value="${reserva.nombre}">
 
-                                    <label for="dni-${reserva.id}">DNI:</label>
-                                    <input type="text" id="reserva-dni-${reservas.id}" class="form-control mb-3" value="${reserva.dni}" required>
+                                    <label for="dni-${reservas.id}">DNI:</label>
+                                    <input type="text" id="reserva-dni-${reservas.id}" class="form-control mb-3" value="${reserva.dni}">
 
-                                    <label for="fecha-entrada-${reserva.id}">Fecha Entrada:</label>
-                                    <input type="date" id="reserva-fech-entra-${reservas.id}" class="form-control mb-3" value="${reserva.fecha_entrada}" required>
+                                    <label for="fecha-entrada-${reservas.id}">Fecha Entrada:</label>
+                                    <input type="date" id="reserva-fech-entra-${reservas.id}" class="form-control mb-3" value="${reserva.fecha_entrada}">
 
-                                    <label for="fecha-salida-${reserva.id}">Fecha Salida:</label>
-                                    <input type="date" id="reserva-fech-sal-${reservas.id}" class="form-control mb-3" value="${reserva.fecha_salida}" required>
+                                    <label for="fecha-salida-${reservas.id}">Fecha Salida:</label>
+                                    <input type="date" id="reserva-fech-sal-${reservas.id}" class="form-control mb-3" value="${reserva.fecha_salida}">
 
                                     <label for="estado-${reservas.id}">Estado:</label>
-                                    <select id="seleccion-${reservas.id}">
+                                    <select id="seleccion-${reservas.id}" class="form-select" size="3">
                                         <option value="Disponible">Disponible</option>
                                         <option value="Reservado">Reservado</option>
                                         <option value="Mantenimiento">Mantenimiento</option>
                                     </select>
 
                                     <button type="submit" class="btn btn-primary w-100">Guardar</button>
-                                </form>
+                                    </form>
                             </div>
                         </div>
                     </div>
@@ -185,66 +183,85 @@ const setupHabitaciones = (habitaciones, datos) => {
 
 onAuthStateChanged(auth, async (user) => {
     if(user){
-        const habitaciones = await getDocs(collection(fs, 'habitaciones'));
-        const datos = await getDocs(collection(fs, 'reservas'));
-        setupHabitaciones(habitaciones, datos);
-        logueado(navlogin, navregis, navcerrar);
+        console.log(user.email);
+        const useremail = await getDoc(doc(fs, "type_accounts", `${user.email}`));
+        if(useremail.data().tipo == 'Admin'){
+            console.log('Admin');
+            logueado(navlogin, navregis, navcerrar);
+            const ul = `
+                <ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: ${'dropdown-dark-border-color'}; --bs-nav-pills-link-active-bg: var(--bs-white);">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active rounded-5" id="home-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Home</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link rounded-5" id="profile-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Profile</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link rounded-5" id="contact-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Contact</button>
+                    </li>
+                </ul>
+                `;
+            muestra_pantalla.innerHTML = ul
+        } else{
+            console.log('No admin');
+            const habitaciones = await getDocs(collection(fs, 'habitaciones'));
+            const datos = await getDocs(collection(fs, 'reservas'));
+            setupHabitaciones(habitaciones, datos);
+            logueado(navlogin, navregis, navcerrar);
+    
+            const datos_habitacion = document.querySelectorAll('a[id^="__"]');
+            datos_habitacion.forEach((habitacion) => {
+                habitacion.addEventListener('click', async e => {
+                    const num = e.target.id.replace(/[^a-zA-Z0-9 ]/g, '');
+                    const seleccion = document.getElementById(`habitaciones-datos-${num}`).style.backgroundColor;
+                    const disponibilidad = document.getElementById(`seleccion-${num}`);
+                    
+                    console.log(seleccion)
+                    if(seleccion == 'rgb(75, 181, 67)'){
+                        disponibilidad.value = 'Disponible';
+                    } else if(seleccion == 'rgb(255, 51, 51)'){
+                        disponibilidad.value = 'Reservado';
+                    } else{
+                        disponibilidad.value = 'Mantenimiento';
+                    }
+                });
+            });
+    
+            const reservas = document.querySelectorAll('form[id^="_"]');
+            reservas.forEach((reserva) => {
+                reserva.addEventListener('submit', async e => {
+                    e.preventDefault();
+                    const num = e.target.id.replace(/[^a-zA-Z0-9 ]/g, '');
+                    const nombre = document.querySelector(`#reserva-nom-${num}`).value;
+                    const dni = document.querySelector(`#reserva-dni-${num}`).value;
+                    const fecha_entrada = document.querySelector(`#reserva-fech-entra-${num}`).value;
+                    const fecha_salida = document.querySelector(`#reserva-fech-sal-${num}`).value;
+                    
+                    const disponibilidad = document.getElementById(`seleccion-${num}`);
+                    const option_disponibilidad = disponibilidad.options[disponibilidad.selectedIndex].value;
+    
+                    await setDoc(doc(fs, 'reservas', `${num}`), {
+                        habitacion: num,
+                        nombre: nombre,
+                        dni: dni,
+                        fecha_entrada: fecha_entrada,
+                        fecha_salida: fecha_salida
+                    });
+                    $(`#datos-habitacion-${num}`).modal('hide');
+    
+                    const datos_habitacion = await getDoc(doc(fs, "habitaciones", `${num}`));
+                    
+                    await setDoc(doc(fs, 'habitaciones', `${num}`), {
+                        precio: datos_habitacion.data().precio,
+                        tipo: datos_habitacion.data().tipo,
+                        desc: datos_habitacion.data().desc,
+                        disponibilidad: option_disponibilidad
+                    });
+                    location.reload();
+                });
+            });
+        };
         $("#signinModal").modal('hide');
-
-
-        const datos_habitacion = document.querySelectorAll('a[id^="__"]');
-        datos_habitacion.forEach((habitacion) => {
-            habitacion.addEventListener('click', async e => {
-                const num = e.target.id.replace(/[^a-zA-Z0-9 ]/g, '');
-                const seleccion = document.getElementById(`habitaciones-datos-${num}`).style.backgroundColor;
-                const disponibilidad = document.getElementById(`seleccion-${num}`);
-                
-                console.log(seleccion)
-                if(seleccion == 'rgb(75, 181, 67)'){
-                    disponibilidad.value = 'Disponible';
-                } else if(seleccion == 'rgb(255, 51, 51)'){
-                    disponibilidad.value = 'Reservado';
-                } else{
-                    disponibilidad.value = 'Mantenimiento';
-                }
-            });
-        });
-
-
-        const reservas = document.querySelectorAll('form[id^="_"]');
-        reservas.forEach((reserva) => {
-            reserva.addEventListener('submit', async e => {
-                e.preventDefault();
-                const num = e.target.id.replace(/[^a-zA-Z0-9 ]/g, '');
-                const nombre = document.querySelector(`#reserva-nom-${num}`).value;
-                const dni = document.querySelector(`#reserva-dni-${num}`).value;
-                const fecha_entrada = document.querySelector(`#reserva-fech-entra-${num}`).value;
-                const fecha_salida = document.querySelector(`#reserva-fech-sal-${num}`).value;
-                
-                const disponibilidad = document.getElementById(`seleccion-${num}`);
-                const option_disponibilidad = disponibilidad.options[disponibilidad.selectedIndex].value;
-
-                await setDoc(doc(fs, 'reservas', `${num}`), {
-                    habitacion: num,
-                    nombre: nombre,
-                    dni: dni,
-                    fecha_entrada: fecha_entrada,
-                    fecha_salida: fecha_salida
-                });
-                $(`#datos-habitacion-${num}`).modal('hide');
-
-                const datos_habitacion = await getDoc(doc(fs, "habitaciones", `${num}`));
-                
-                await setDoc(doc(fs, 'habitaciones', `${num}`), {
-                    precio: datos_habitacion.data().precio,
-                    tipo: datos_habitacion.data().tipo,
-                    desc: datos_habitacion.data().desc,
-                    disponibilidad: option_disponibilidad
-                });
-                location.reload();
-            });
-        });
-
     }
     else{
         console.log('SignOut');
@@ -267,5 +284,7 @@ onAuthStateChanged(auth, async (user) => {
         `;
         muestra_pantalla.innerHTML = div;
         nologueado(navlogin, navregis, navcerrar);
+
+
     }
 });
