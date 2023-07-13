@@ -1,4 +1,4 @@
-import { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, fs, collection, getDocs, setDoc, doc, getDoc } from "../database/firebase.js";
+import { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, fs, collection, getDocs, setDoc, doc, getDoc, updatePassword } from "../database/firebase.js";
 
 const loginform = document.querySelector("#login-form");
 
@@ -183,10 +183,8 @@ const setupHabitaciones = (habitaciones, datos) => {
 
 onAuthStateChanged(auth, async (user) => {
     if(user){
-        console.log(user.email);
         const useremail = await getDoc(doc(fs, "type_accounts", `${user.email}`));
         if(useremail.data().tipo == 'Admin'){
-            console.log('Admin');
             logueado(navlogin, navregis, navcerrar);
             const ul = `
             <div style="width: 700px; margin: 20px" class="titulo-habitaciones">
@@ -194,67 +192,77 @@ onAuthStateChanged(auth, async (user) => {
             </div>
             <div class="contenedor">
                 <div class="rounded border-success" style="width: 450px; padding:10px; margin: 10px; border: 3px solid">
-                    <div class="contenedor">
-                        <h3>Administrar un usuario</h3>
-                    </div>
-                    <div style="padding-top: 20px">
-                        <label class="form-label">Email:</label>
-                        <div class="input-group mb-3">
-                            <input id="nombre-user" type="text" class="form-control" placeholder="nombre">
-                            <span class="input-group-text">@</span>
-                            <input id="dominio-user" type="text" class="form-control" placeholder="dominio">
+                    <form id="register-y-update-user">
+                        <div class="contenedor">
+                            <h3>Administrar un usuario</h3>
                         </div>
-                        <label class="form-label">Contraseña:</label>
-                        <div class="input-group mb-3">
-                            <input id="password-user" type="text" class="form-control" placeholder="Contraseña">
+                        <div style="padding-top: 20px">
+                            <div id="msg-user">
+
+                            </div>
+                            <label class="form-label">Email:</label>
+                            <div class="input-group mb-3">
+                                <input id="nombre-user" type="text" class="form-control" placeholder="nombre">
+                                <span class="input-group-text">@</span>
+                                <input id="dominio-user" type="text" class="form-control" placeholder="dominio">
+                            </div>
+                            <label class="form-label">Contraseña:</label>
+                            <div class="input-group mb-3">
+                                <input id="password-user" type="text" class="form-control" placeholder="Contraseña">
+                            </div>
+                            <label style="width: 100%" class="form-label">Tipo de cuenta:</label>
+                            <div style="width: 100%" class="btn-group-vertical" role="group">
+                                <input id="btn-admin" type="radio" class="btn-check" name="tipo-user">
+                                <label class="btn btn-outline-dark" for="btn-admin">Administrador</label>
+                                <input id="btn-recep" type="radio" class="btn-check" name="tipo-user" checked>
+                                <label class="btn btn-outline-dark" for="btn-recep">Recepcionista</label>
+                            </div>
+                            <div style="width: 100%; padding-top:10px" class="contenedor">
+                                <button id="register-user" style="width: 47%; margin:3%" type="button" class="btn btn-success">Registrar</button>
+                                <button id="update-user" style="width: 47%"; margin:3%" type="button" class="btn btn-primary">Actualizar</button>
+                            </div>
                         </div>
-                        <label style="width: 100%" class="form-label">Tipo de cuenta:</label>
-                        <div style="width: 100%" class="btn-group-vertical" role="group">
-                            <input id="btn-admin" type="radio" class="btn-check" name="tipo-user">
-                            <label class="btn btn-outline-dark" for="btn-admin">Administrador</label>
-                            <input id="btn-recep" type="radio" class="btn-check" name="tipo-user" checked>
-                            <label class="btn btn-outline-dark" for="btn-recep">Recepcionista</label>
-                        </div>
-                        <div style="width: 100%; padding-top:10px" class="contenedor">
-                            <button id="register-user" style="width: 47%; margin:3%" type="button" class="btn btn-success">Registrar</button>
-                            <button id="update-user" style="width: 47%"; margin:3%" type="button" class="btn btn-primary">Actualizar</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="rounded border-info" style="width: 450px; padding:10px; margin: 10px; border: 3px solid">
-                    <div class="contenedor">
-                        <h3>Administrar una habitación</h3>
-                    </div>
-                    <div style="padding-top: 20px">
-                        <label class="form-label">Habitación:</label>
-                        <div class="input-group mb-3">
-                            <input id="verify-hab" type="text" class="form-control" placeholder="Número de habitación">
-                            <button id="btn-verify-hab" class="btn btn-outline-success" type="button">Verificar</button>
+                    <form id="register-y-update-hab">
+                        <div class="contenedor">
+                            <h3>Administrar una habitación</h3>
                         </div>
-                        <label class="form-label">Precio:</label>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">S/</span>
-                            <input id="precio-hab" type="text" class="form-control">
-                            <span class="input-group-text">.00</span>
+                        <div style="padding-top: 20px">
+                            <label class="form-label">Habitación:</label>
+                            <div id="msg-hab">
+
+                            </div>
+                            <div class="input-group mb-3">
+                                <input id="verify-hab" type="text" class="form-control" placeholder="Número de habitación">
+                                <button id="btn-verify-hab" class="btn btn-outline-success" type="button">Verificar</button>
+                            </div>
+                            <label class="form-label">Precio:</label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">S/</span>
+                                <input id="precio-hab" type="text" class="form-control">
+                                <span class="input-group-text">.00</span>
+                            </div>
+                            <div style="margin-top: 20px" class="input-group">
+                                <span class="input-group-text">Descripción:</span>
+                                <textarea id="desc-hab" class="form-control"></textarea>
+                            </div>
+                            <label style="width: 100%; margin-top: 20px" class="form-label">Tipo de habitación:</label>
+                            <div style="width: 100%" class="contenedor">
+                                <input id="tipo-hab-indiv" type="radio" class="btn-check" name="tipo-hab" checked>
+                                <label style="width: 29%; margin:1%" class="btn btn-outline-dark" for="tipo-hab-indiv">Individual</label>
+                                <input id="tipo-hab-dual" type="radio" class="btn-check" name="tipo-hab">
+                                <label style="width: 29%; margin:1%" class="btn btn-outline-dark" for="tipo-hab-dual">Dual</label>
+                                <input id="tipo-hab-fam" type="radio" class="btn-check" name="tipo-hab">
+                                <label style="width: 29%; margin:1%" class="btn btn-outline-dark" for="tipo-hab-fam">Familiar</label>
+                            </div>
+                            <div style="width: 100%; padding-top: 10px" class="contenedor">
+                                <button id="register-hab" style="width: 47%; margin:3%" type="button" class="btn btn-success">Registrar</button>
+                                <button id="update-hab" style="width: 47%"; margin:3%" type="button" class="btn btn-primary">Actualizar</button>
+                            </div>
                         </div>
-                        <div style="margin-top: 20px" class="input-group">
-                            <span class="input-group-text">Descripción:</span>
-                            <textarea id="desc-hab" class="form-control"></textarea>
-                        </div>
-                        <label style="width: 100%; margin-top: 20px" class="form-label">Tipo de habitación:</label>
-                        <div style="width: 100%" class="contenedor">
-                            <input id="tipo-hab-indiv" type="radio" class="btn-check" name="tipo-hab" checked>
-                            <label style="width: 29%; margin:1%" class="btn btn-outline-dark" for="tipo-hab-indiv">Individual</label>
-                            <input id="tipo-hab-dual" type="radio" class="btn-check" name="tipo-hab">
-                            <label style="width: 29%; margin:1%" class="btn btn-outline-dark" for="tipo-hab-dual">Dual</label>
-                            <input id="tipo-hab-fam" type="radio" class="btn-check" name="tipo-hab">
-                            <label style="width: 29%; margin:1%" class="btn btn-outline-dark" for="tipo-hab-fam">Familiar</label>
-                        </div>
-                        <div style="width: 100%; padding-top: 10px" class="contenedor">
-                            <button id="register-hab" style="width: 47%; margin:3%" type="button" class="btn btn-success">Registrar</button>
-                            <button id="update-hab" style="width: 47%"; margin:3%" type="button" class="btn btn-primary">Actualizar</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
                 `;
@@ -265,16 +273,18 @@ onAuthStateChanged(auth, async (user) => {
                 const nombre_user = document.querySelector('#nombre-user').value;
                 const domain_user = document.querySelector('#dominio-user').value;
                 const pass_user = document.querySelector('#password-user').value;
+                
+                const email = nombre_user + "@" + domain_user;
+    
+                const form = document.getElementById('register-y-update-user');
+                const msg = document.getElementById('msg-user');
                 var type_user = '';
-
+    
                 if(document.getElementById('btn-admin').checked){
                     type_user = 'Admin';
                 } else{
                     type_user = 'Recep';
                 }
-
-                const email = nombre_user + "@" + domain_user;
-                console.log(email)
 
                 createUserWithEmailAndPassword(auth, email, pass_user)
                 .then(async (userCredential) => {
@@ -284,13 +294,56 @@ onAuthStateChanged(auth, async (user) => {
                     });
                 })
                 .catch((error) => {
+                    form.reset();
                     console.log("El usuario no se pudo registrar", error)
-                })
+                    var mensaje = '';
+                    if(error == 'FirebaseError: Firebase: Error (auth/invalid-email).'){
+                        mensaje = '<p class="error" >Email inválido</p>';
+                    } else if(error == 'FirebaseError: Firebase: Error (auth/email-already-in-use).'){
+                        mensaje = '<p class="error" >El email ya ha sido registrado</p>';
+                    } else{
+                        mensaje = '<p class="error" >Ocurrió un error inesperado</p>';
+                    }
+                    msg.innerHTML = mensaje;
+                    form.reset();
+                });
             });
 
             const update_user = document.querySelector('#update-user');
             update_user.addEventListener('click', async e => {
-                console.log('nose')
+                const nombre_useru = document.querySelector('#nombre-user').value;
+                const domain_useru = document.querySelector('#dominio-user').value;
+                const pass_useru = document.querySelector('#password-user').value;
+                
+                const emailu = nombre_useru + "@" + domain_useru;
+    
+                const formu = document.getElementById('register-y-update-user');
+                const msgu = document.getElementById('msg-user');
+                var type_useru = '';
+
+                if(document.getElementById('btn-admin').checked){
+                    type_useru = 'Admin';
+                } else{
+                    type_useru = 'Recep';
+                }
+                
+                if(pass_useru != ''){
+                    //updatePassword(emailu, pass_useru).then(async (e) => {
+                    //    msgu.innerHTML = '<p class="success" >Datos actualizados correctamente</p>'
+                    //    
+                    //    await setDoc(doc(fs, 'type_accounts', emailu), {
+                    //        tipo: type_useru
+                    //    });
+                    //}).catch((error) => {
+                    //    msgu.innerHTML = '<p class="error" >Ocurrió un error</p>'
+                    //    console.log(error);
+                    //});
+                } else{
+                    await setDoc(doc(fs, 'type_accounts', emailu), {
+                        tipo: type_useru
+                    });
+                    msgu.innerHTML = '<p class="success" >El tipo de cuenta del usuario se ha actualizado</p>'
+                }
             });
 
             const verify_hab = document.querySelector('#btn-verify-hab');
