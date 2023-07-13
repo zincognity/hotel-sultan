@@ -426,23 +426,134 @@ onAuthStateChanged(auth, async (user) => {
         console.log('SignOut');
 
         const div = `
-            <div class="principal" id="principal" style="background-color: ">
+        <style>
+        @import url(https://fonts.googleapis.com/css?family=Exo:100);
+        /* Background data (Original source: https://subtlepatterns.com/grid-me/) */
+        /* Animations */
+        @-webkit-keyframes bg-scrolling-reverse {
+        100% {
+            background-position: 50px 50px;
+        }
+        }
+        @-moz-keyframes bg-scrolling-reverse {
+        100% {
+            background-position: 50px 50px;
+        }
+        }
+        @-o-keyframes bg-scrolling-reverse {
+        100% {
+            background-position: 50px 50px;
+        }
+        }
+        @keyframes bg-scrolling-reverse {
+        100% {
+            background-position: 50px 50px;
+        }
+        }
+        @-webkit-keyframes bg-scrolling {
+        0% {
+            background-position: 50px 50px;
+        }
+        }
+        @-moz-keyframes bg-scrolling {
+        0% {
+            background-position: 50px 50px;
+        }
+        }
+        @-o-keyframes bg-scrolling {
+        0% {
+            background-position: 50px 50px;
+        }
+        }
+        @keyframes bg-scrolling {
+        0% {
+            background-position: 50px 50px;
+        }
+        }
+
+       
+        body {
+            
+            color: #999;
+            font: 400 16px/1.5 exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+            text-align: center;
+            /* img size is 50x50 */
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0;
+            -webkit-animation: bg-scrolling-reverse .92s infinite;
+            /* Safari 4+ */
+            -moz-animation: bg-scrolling-reverse .92s infinite;
+            /* Fx 5+ */
+            -o-animation: bg-scrolling-reverse .92s infinite;
+            /* Opera 12+ */
+            animation: bg-scrolling-reverse .98s infinite;
+            /* IE 10+ */
+            -webkit-animation-timing-function: linear;
+            -moz-animation-timing-function: linear;
+            -o-animation-timing-function: linear;
+            animation-timing-function: linear;
+          }
+         
+
+
+        .descripcion {
+            color: black;
+        }
+
+
+
+
+        </style>
+            <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Infinite Background Animation</title>
+            <link rel="stylesheet" media="all" href="style.css" />
+            </head>
+            <body class="cuerpo">
+            <h1>
+                Hotel Súltaan
+            </h1>
+
+            <div class="descripcion" id="principal" style="background-color: ">
+            <h2>DESCRIPCIÓN:</h2>
+            <p>La pagina consiste en un sistema de gestión hotelera, la cual tiene dos accesos a ella, son:
+            </p>
+            <section class="cuadros_accesos">
                 <div>
-                    <h5 class="text" href="" data-bs-toggle="modal" id="__" data-bs-target="#datos-habitacion">Ingresa a tu cuenta para ver información</h5>
+                <h2>Recepcionista:</h2>
+                <p>Encargado de gestionar las habitaciones como personal de recepción presencialmente en el hotel mismo</p>
                 </div>
-                <div class="habitaciones-detalles">
-                    <div>
-                        <h5>Entrar como:</h5>
-                        
-                        <p>Precio: </p>
-                        <p>Descripción: </p>
-                        <p>Estado: </p>
-                    </div>
+                
                 <div>
-                <img src" alt="">
-            </divx>
+                <h2>Administrador:</h2>
+                <p>Tiene mas acceso a la misma pagina, teniendo control de crear nuevas cuentas con acceso y gestionar los empleados</p>
+                </div>
+            </section>
+
+        </divx>
+            </body>
         `;
         muestra_pantalla.innerHTML = div;
+
+        // <p>
+        // La pagina consiste en un sistema de gestión hotelera, la cual tiene dos accesos a ella, una es como "recepcionista", la cual se encarga de gestionar las habitaciones como personal de recepción presencialmente en el hotel mismo y el otro acceso es como "administrador", el cual tiene mas acceso a la misma pagina, teniendo control de crear nuevas cuentas con acceso y gestionar los empleados</p>
+
+        // <div>
+        //         <h5 class="text" href="" data-bs-toggle="modal" id="__" data-bs-target="#datos-habitacion">Ingresa a tu cuenta para ver información</h5>
+        //     </div>
+        //     <div class="habitaciones-detalles">
+        //         <div>
+                    
+        //             <p>Precio: </p>
+        //             <p>Descripción: </p>
+        //             <p>Estado: </p>
+        //         </div>
+        //     <div>
+
+            
+        //     <img src" alt=""></div>
+       
+
         nologueado(navlogin, navregis, navcerrar);
 
 

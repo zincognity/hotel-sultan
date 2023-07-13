@@ -222,14 +222,45 @@ img {
 }
 
 
-.principal {
-    border: 10px solid;
-    width: 80%;
-    align-items: center;
-    display: flex;
-    height: 500px;
+/* Diseño de cuadro de pagina principal */
+body {
+    
 }
 
 .nav {
     padding: 100px;
+}
+#principal {
+    border: 8px solid;
+    width: 700px;
+    align-items: center;
+    height: 500px;
+    background-color: rgba(1, 128, 28, 0.788);
+}
+
+#principal h2 {
+    font-family: 'Inter', sans-serif;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+#principal p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 30px;
+}
+
+.cuadros_accesos {
+    /* width: 200px; */
+    height: 200px;
+    border: 1px solid black;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+}
+
+.cuadros_accesos div {
+    /* padding: 0 70px; */
+    border: 1px solid black;
+    width: 348px;
+    height: 200px;
 }
