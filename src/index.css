@@ -221,15 +221,189 @@ img {
     100% { opacity: 1.0; }
 }
 
-
-.principal {
-    border: 10px solid;
-    width: 80%;
-    align-items: center;
-    display: flex;
-    height: 500px;
+@import url(https://fonts.googleapis.com/css?family=Exo:100);
+        /* Background data (Original source: https://subtlepatterns.com/grid-me/) */
+        /* Animations */
+@-webkit-keyframes bg-scrolling-reverse {
+    100% {
+        background-position: 50px 50px;
+    }
+        }
+@-moz-keyframes bg-scrolling-reverse {
+    100% {
+        background-position: 50px 50px;
+    }
 }
+@-o-keyframes bg-scrolling-reverse {
+    100% {
+        background-position: 50px 50px;
+    }
+}
+@keyframes bg-scrolling-reverse {
+    100% {
+        background-position: 50px 50px;
+    }
+}
+@-webkit-keyframes bg-scrolling {
+    0% {
+        background-position: 50px 50px;
+    }
+}
+@-moz-keyframes bg-scrolling {
+    0% {
+        background-position: 50px 50px;
+    }
+}
+@-o-keyframes bg-scrolling {
+    0% {
+        background-position: 50px 50px;
+    }
+}
+@keyframes bg-scrolling {
+    0% {
+    background-position: 50px 50px;
+    }
+}
+
+
+body {
+    font: 400 16px/1.5 exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0;
+    -webkit-animation: bg-scrolling-reverse .92s infinite;
+    /* Safari 4+ */
+    -moz-animation: bg-scrolling-reverse .92s infinite;
+    /* Fx 5+ */
+    -o-animation: bg-scrolling-reverse .92s infinite;
+    /* Opera 12+ */
+    animation: bg-scrolling-reverse .98s infinite;
+    /* IE 10+ */
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -o-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+/* Diseño de cuadro de pagina principal */
 
 .nav {
     padding: 100px;
+}
+
+#principal {
+    border: 8px solid;
+    width: 700px;
+    align-items: center;
+    height: 500px;
+    background-color: rgba(1, 128, 28, 0.788);
+}
+
+#principal h2 {
+    font-family: 'Inter', sans-serif;
+    margin-top: 5px;
+    margin-bottom: 100px;
+}
+
+#principal p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 30px;
+}
+
+.cuadros_accesos {
+    /* width: 200px; */
+    height: 200px;
+    border: 1px solid black;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+}
+
+.cuadros_accesos div {
+    /* padding: 0 70px; */
+    border: 1px solid black;
+    width: 348px;
+    height: 200px;
+}
+
+
+.menu-si {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+}
+
+
+
+.card-si {
+    width: 350px;
+    height: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    color: white;
+    box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+}
+
+.contenedor img {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.9;
+    transition: opacity .2s ease-out;
+}
+
+.contenedor h2 {
+    position: absolute;
+    inset: auto auto 30px 30px;
+    margin: 0;
+    transition: inset .3s .3s ease-out;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.contenedor p, .contenedor a {
+    position: absolute;
+    opacity: 0;
+    max-width: 80%;
+    transition: opacity .3s ease-out;
+}
+
+.contenedor p {
+    inset: auto auto 80px 30px;
+}
+
+.contenedor a {
+    inset: auto auto 40px 30px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.card-si:hover .h2-si{
+    inset: auto auto 220px 30px;
+    transition: inset .3s ease-out;
+}
+
+.card-si:hover .p-si, .card-si:hover .a-si {
+    opacity: 1;
+    transition: opacity .5s .1s ease-in;
+}
+
+.card-si:hover .img-si {
+    transition: opacity .3s ease-in;
+    opacity: 1;
+}
+
+.menu-si:hover .h2-si {
+    background-color: red;
+}
+
+.material-symbols-outlined {
+    vertical-align: middle;
 }
