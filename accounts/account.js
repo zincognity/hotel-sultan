@@ -517,13 +517,10 @@ onAuthStateChanged(auth, async (user) => {
             </h1>
         </div>
         <div class="descripcion p-3 bg-info bg-opacity-10 border border-info border-start-0 rounded-ends" id="principal" style="background-color: ">
-            <h7>
-                La pagina consiste en un sistema de gestión hotelera, la cual tiene dos accesos a ella, una es como "recepcionista", la cual se encarga de gestionar las habitaciones como personal de recepción presencialmente en el hotel mismo y el otro acceso es como "administrador", el cual tiene mas acceso a la misma pagina, teniendo control de crear nuevas cuentas con acceso y gestionar los empleados.
-            </h7>
             <main class="menu-si">
                 <div class="card-si">
-                    <img class="img-si" src="https://images.unsplash.com/photo-1656618020911-1c7a937175fd?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1MzQyNTE&ixlib=rb-1.2.1&q=80" alt="">
-                    <div class="card-content">
+                <img class="img-si" src="../img/icon_admin.svg" alt="">
+                <div class="card-content">
                         <h2 class="h2-si">
                             Recepcionista:
                         </h2>
@@ -532,10 +529,11 @@ onAuthStateChanged(auth, async (user) => {
                         </p>
                     </div>
                 </div>
+
                 <div class="card-si">
-                    <img class="img-si" src="https://images.unsplash.com/photo-1656618020911-1c7a937175fd?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1MzQyNTE&ixlib=rb-1.2.1&q=80" alt="">
-                    <div class="card-content">
-                        <h2 class="h2-si">
+                <img class="img-sii" src="../img/icon_manager.svg" alt="">
+                <div class="card-content">
+                        <h2 class="h2-sii">
                             Administrador:
                         </h2>
                         <p class="p-si">
