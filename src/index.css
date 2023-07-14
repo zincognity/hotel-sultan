@@ -288,7 +288,6 @@ body {
 .nav {
     padding: 100px;
 }
-
 #principal {
     border: 8px solid;
     width: 700px;
@@ -301,6 +300,7 @@ body {
     font-family: 'Inter', sans-serif;
     margin-top: 5px;
     margin-bottom: 100px;
+    margin-bottom: 0;
 }
 
 #principal p {

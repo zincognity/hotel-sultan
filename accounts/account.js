@@ -426,66 +426,42 @@ onAuthStateChanged(auth, async (user) => {
         console.log('SignOut');
 
         const div = `
+        <div class="contenedor titulo">
+            <h1>
+                Sección de administración
+            </h1>
+        </div>
         <div class="descripcion p-3 bg-info bg-opacity-10 border border-info border-start-0 rounded-ends" id="principal" style="background-color: ">
+            <h7>
+                La pagina consiste en un sistema de gestión hotelera, la cual tiene dos accesos a ella, una es como "recepcionista", la cual se encarga de gestionar las habitaciones como personal de recepción presencialmente en el hotel mismo y el otro acceso es como "administrador", el cual tiene mas acceso a la misma pagina, teniendo control de crear nuevas cuentas con acceso y gestionar los empleados.
+            </h7>
             <main class="menu-si">
                 <div class="card-si">
                     <img class="img-si" src="https://images.unsplash.com/photo-1656618020911-1c7a937175fd?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1MzQyNTE&ixlib=rb-1.2.1&q=80" alt="">
                     <div class="card-content">
                         <h2 class="h2-si">
-                            Card Heading
+                            Recepcionista:
                         </h2>
                         <p class="p-si">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
+                            Encargado de gestionar las habitaciones como personal de recepción presencialmente en el hotel mismo
                         </p>
-                        <a class="a-si" href="#" class="button">
-                            Find out more 
-                        <span class="material-symbols-outlined">
-                            arrow_right_alt
-                        </span>
-                        </a>
                     </div>
                 </div>
                 <div class="card-si">
                     <img class="img-si" src="https://images.unsplash.com/photo-1656618020911-1c7a937175fd?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1MzQyNTE&ixlib=rb-1.2.1&q=80" alt="">
                     <div class="card-content">
                         <h2 class="h2-si">
-                            Card Heading
+                            Administrador:
                         </h2>
                         <p class="p-si">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
+                        Tiene mas acceso a la misma pagina, teniendo control de crear nuevas cuentas con acceso y gestionar los empleados
                         </p>
-                        <a class="a-si" href="#" class="button">
-                            Find out more 
-                        <span class="material-symbols-outlined">
-                            arrow_right_alt
-                        </span>
-                        </a>
                     </div>
                 </div>
             </main>
         </div>
         `;
         muestra_pantalla.innerHTML = div;
-
-        // <p>
-        // La pagina consiste en un sistema de gestión hotelera, la cual tiene dos accesos a ella, una es como "recepcionista", la cual se encarga de gestionar las habitaciones como personal de recepción presencialmente en el hotel mismo y el otro acceso es como "administrador", el cual tiene mas acceso a la misma pagina, teniendo control de crear nuevas cuentas con acceso y gestionar los empleados</p>
-
-        // <div>
-        //         <h5 class="text" href="" data-bs-toggle="modal" id="__" data-bs-target="#datos-habitacion">Ingresa a tu cuenta para ver información</h5>
-        //     </div>
-        //     <div class="habitaciones-detalles">
-        //         <div>
-                    
-        //             <p>Precio: </p>
-        //             <p>Descripción: </p>
-        //             <p>Estado: </p>
-        //         </div>
-        //     <div>
-
-            
-        //     <img src" alt=""></div>
-       
-
         nologueado(navlogin, navregis, navcerrar);
 
 
