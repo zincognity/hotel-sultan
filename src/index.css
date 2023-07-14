@@ -407,3 +407,7 @@ body {
 .material-symbols-outlined {
     vertical-align: middle;
 }
+
+.titulo {
+    min-width: 100%;
+}
