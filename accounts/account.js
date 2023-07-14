@@ -10,43 +10,16 @@ loginform.addEventListener("submit", (e) => {
     const loginemail = document.querySelector("#login-email").value;
     const loginpass = document.querySelector("#login-password").value;
 
-    console.log(loginemail, loginpass);
-
     signInWithEmailAndPassword(auth, loginemail, loginpass)
         .then((userCredential) => {
-            console.log(userCredential.user, "Ha ingresado a su cuenta");
             errorlogin.innerHTML = '<p class="success">Ingresando...</p>';
             loginform.reset();
         })
         .catch((error) => {
-            console.log("El usuario no se pudo registrar", error)
+            console.log("El usuario no se pudo loguear", error)
             errorlogin.innerHTML = '<p class="error">Datos incorrectos</p>';
             location.reload();
         })
-});
-
-const signupform = document.querySelector("#signup-form");
-signupform.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const signupemail = document.querySelector("#signup-email").value;
-    const signuppass = document.querySelector("#signup-password").value;
-    const signupconfirmpass = document.querySelector("#signup-confirmpassword").value;
-    console.log("Se ha registrado un nuevo usuario:", signupemail);
-
-    if(signuppass == signupconfirmpass){
-        createUserWithEmailAndPassword(auth, signupemail, signuppass)
-        .then((userCredential) => {
-            signupform.reset();
-            console.log("Usuario registrado");
-            $("#signupModal").modal('hide');
-        })
-        .catch((error) => {
-            console.log("El usuario no se pudo registrar", error)
-        })
-    } else{
-        console.log("Las contraseñas no son idénticas.")
-    }
 });
 
 const logout = document.querySelector('#logout')
@@ -67,20 +40,17 @@ logout.addEventListener("click", (e) => {
 const muestra_pantalla = document.querySelector('.contenedor');
 
 const navlogin = document.querySelector('.navlogin');
-const navregis = document.querySelector('.navregis');
 const navcerrar = document.querySelector('.navcerrar');
 const reservas = document.querySelector('.reservas');
 
-function logueado(navlogin, navregis, navcerrar) {
+function logueado(navlogin, navcerrar) {
     navlogin.style.display = 'none';
-    navregis.style.display = 'none';
     navcerrar.style.display = 'block';
 
 };
 
-function nologueado(navlogin, navregis, navcerrar) {
+function nologueado(navlogin, navcerrar) {
     navlogin.style.display = 'block';
-    navregis.style.display = 'block';
     navcerrar.style.display = 'none';
 }
 
@@ -185,7 +155,7 @@ onAuthStateChanged(auth, async (user) => {
     if(user){
         const useremail = await getDoc(doc(fs, "type_accounts", `${user.email}`));
         if(useremail.data().tipo == 'Admin'){
-            logueado(navlogin, navregis, navcerrar);
+            logueado(navlogin, navcerrar);
             const ul = `
             <div style="width: 700px; margin: 20px" class="titulo-habitaciones">
                 <h3>Gestión de datos para Administradores</h3>
@@ -219,7 +189,7 @@ onAuthStateChanged(auth, async (user) => {
                             </div>
                             <div style="width: 100%; padding-top:10px" class="contenedor">
                                 <button id="register-user" style="width: 47%; margin:3%" type="button" class="btn btn-success">Registrar</button>
-                                <button id="update-user" style="width: 47%"; margin:3%" type="button" class="btn btn-primary">Actualizar</button>
+                                <button id="update-user" style="width: 47%"; margin:3%" type="button" class="btn btn-primary" disabled>Actualizar</button>
                             </div>
                         </div>
                     </form>
@@ -235,8 +205,7 @@ onAuthStateChanged(auth, async (user) => {
 
                             </div>
                             <div class="input-group mb-3">
-                                <input id="verify-hab" type="text" class="form-control" placeholder="Número de habitación">
-                                <button id="btn-verify-hab" class="btn btn-outline-success" type="button">Verificar</button>
+                                <input id="num-hab" type="text" class="form-control" placeholder="Número de habitación">
                             </div>
                             <label class="form-label">Precio:</label>
                             <div class="input-group mb-3">
@@ -259,7 +228,7 @@ onAuthStateChanged(auth, async (user) => {
                             </div>
                             <div style="width: 100%; padding-top: 10px" class="contenedor">
                                 <button id="register-hab" style="width: 47%; margin:3%" type="button" class="btn btn-success">Registrar</button>
-                                <button id="update-hab" style="width: 47%"; margin:3%" type="button" class="btn btn-primary">Actualizar</button>
+                                <button id="update-hab" style="width: 47%"; margin:3%" type="button" class="btn btn-primary" disabled>Actualizar</button>
                             </div>
                         </div>
                     </form>
@@ -298,11 +267,9 @@ onAuthStateChanged(auth, async (user) => {
                     console.log("El usuario no se pudo registrar", error)
                     var mensaje = '';
                     if(error == 'FirebaseError: Firebase: Error (auth/invalid-email).'){
-                        mensaje = '<p class="error" >Email inválido</p>';
-                    } else if(error == 'FirebaseError: Firebase: Error (auth/email-already-in-use).'){
-                        mensaje = '<p class="error" >El email ya ha sido registrado</p>';
+                        mensaje = '<h1 class="error" >Email inválido</h1>';
                     } else{
-                        mensaje = '<p class="error" >Ocurrió un error inesperado</p>';
+                        mensaje = '<h1 class="error" >Ocurrió un error inesperado</h1>';
                     }
                     msg.innerHTML = mensaje;
                     form.reset();
@@ -310,10 +277,76 @@ onAuthStateChanged(auth, async (user) => {
             });
 
             const update_user = document.querySelector('#update-user');
+
+            $('#nombre-user, #dominio-user').blur(async function(){
+                const nombre_useru = document.querySelector('#nombre-user').value;
+                const domain_useru = document.querySelector('#dominio-user').value;
+                const email = nombre_useru + "@" + domain_useru;
+                const obtener_email = await getDoc(doc(fs, "type_accounts", email));
+
+                const msgu = document.getElementById('msg-user');
+                msgu.innerHTML = '';
+
+                try{
+                    if(obtener_email.data().tipo == 'Admin' || obtener_email.data().tipo == 'Recep'){
+                        document.getElementById('password-user').disabled = true;
+                        document.getElementById('register-user').disabled = true;
+                        document.getElementById('update-user').disabled = false;
+                    };
+                } catch (err){
+                    document.getElementById('password-user').disabled = false;
+                    document.getElementById('register-user').disabled = false;
+                    document.getElementById('update-user').disabled = true;
+                };
+            });
+
+            $('#num-hab').blur(async function(){
+                const hab = document.querySelector('#num-hab').value;
+                const form = document.getElementById('register-y-update-hab');
+
+                const msgu = document.getElementById('msg-hab');
+                msgu.innerHTML = '';
+
+                try{
+                    if(hab != ''){
+                        const obtener_hab = await getDoc(doc(fs, "habitaciones", hab));
+                        if(obtener_hab.data()){
+                            msgu.innerHTML = '<h1 class="error" >La habitación si existe</>';
+                            const precio = document.getElementById('precio-hab');
+                            precio.value = obtener_hab.data().precio;
+                            const desc = document.getElementById('desc-hab');
+                            desc.value = obtener_hab.data().desc;
+    
+                            const tipo_hab = obtener_hab.data().tipo;
+                            if(tipo_hab == 'Individual'){
+                                const tipo_indiv = document.getElementById('tipo-hab-indiv');
+                                tipo_indiv.checked = true;
+                            } else if(tipo_hab == 'Dual'){
+                                const tipo_dual = document.getElementById('tipo-hab-dual');
+                                tipo_dual.checked = true;
+                            } else{
+                                const tipo_fam = document.getElementById('tipo-hab-fam');
+                                tipo_fam.checked = true;
+                            }
+                            document.getElementById('update-hab').disabled = false;
+                            document.getElementById('register-hab').disabled = true;
+                        } else{
+                            const a = hab;
+                            msgu.innerHTML = '<h1 class="success" >Habitación no existente</>';
+                            document.getElementById('register-hab').disabled = false;
+                            document.getElementById('update-hab').disabled = true;
+                            form.reset();
+                            document.querySelector('#num-hab').value = a;
+                        }
+                    }
+                } catch (err){
+                    msgu.innerHTML = '<h1 class="error" >Hubo un error</>';
+                };
+            });
+
             update_user.addEventListener('click', async e => {
                 const nombre_useru = document.querySelector('#nombre-user').value;
                 const domain_useru = document.querySelector('#dominio-user').value;
-                const pass_useru = document.querySelector('#password-user').value;
                 
                 const emailu = nombre_useru + "@" + domain_useru;
     
@@ -327,38 +360,90 @@ onAuthStateChanged(auth, async (user) => {
                     type_useru = 'Recep';
                 }
                 
-                if(pass_useru != ''){
-                    //updatePassword(emailu, pass_useru).then(async (e) => {
-                    //    msgu.innerHTML = '<p class="success" >Datos actualizados correctamente</p>'
-                    //    
-                    //    await setDoc(doc(fs, 'type_accounts', emailu), {
-                    //        tipo: type_useru
-                    //    });
-                    //}).catch((error) => {
-                    //    msgu.innerHTML = '<p class="error" >Ocurrió un error</p>'
-                    //    console.log(error);
-                    //});
-                } else{
-                    await setDoc(doc(fs, 'type_accounts', emailu), {
-                        tipo: type_useru
-                    });
-                    msgu.innerHTML = '<p class="success" >El tipo de cuenta del usuario se ha actualizado</p>'
-                }
-            });
-
-            const verify_hab = document.querySelector('#btn-verify-hab');
-            verify_hab.addEventListener('click', async => {
-                console.log('nosee')
+                await setDoc(doc(fs, 'type_accounts', emailu), {
+                    tipo: type_useru
+                });
+                msgu.innerHTML = '<h1 class="success" >El tipo de cuenta del usuario se ha actualizado</>';
+                formu.reset();
             });
 
             const register_hab = document.querySelector('#register-hab');
             register_hab.addEventListener('click', async e =>{
-                console.log('nosi')
+                const hab = document.querySelector('#num-hab').value;
+                const form = document.getElementById('register-y-update-hab');
+
+                const msgu = document.getElementById('msg-hab');
+                msgu.innerHTML = '';
+
+                try{
+                    const precio = document.getElementById('precio-hab').value;
+                    const desc = document.getElementById('desc-hab').value;
+                    var tipo = '';
+                    
+                    if(document.getElementById('tipo-hab-indiv').checked == true){
+                        tipo = 'Individual'
+                    } else if(document.getElementById('tipo-hab-dual').checked == true){
+                        tipo = 'Dual'
+                    } else{
+                        tipo = 'Familiar'
+                    }
+
+                    await setDoc(doc(fs, 'habitaciones', `${hab}`), {
+                        tipo: tipo,
+                        precio: precio,
+                        desc: desc,
+                        disponibilidad: 'Disponible'
+                    });
+
+                    msgu.innerHTML = '<h1 class="success" >Se ha registrado una nueva habitación</>';
+
+                    await setDoc(doc(fs, 'reservas', `${hab}`), {
+                        habitacion: hab,
+                        dni: '',
+                        nombre: '',
+                        fecha_entrada: '',
+                        fecha_salida: ''
+                    });
+                    form.reset();
+                } catch (err){
+                    msgu.innerHTML = '<h1 class="error" >Hubo un error</>';
+                };
             });
 
             const update_hab = document.querySelector('#update-hab');
             update_hab.addEventListener('click', async e => {
-                console.log('si se')
+                const hab = document.querySelector('#num-hab').value;
+                const form = document.getElementById('register-y-update-hab');
+
+                const msgu = document.getElementById('msg-hab');
+                msgu.innerHTML = '';
+
+                try{
+                    const obtener_hab = await getDoc(doc(fs, "habitaciones", hab));
+                    const precio = document.getElementById('precio-hab').value;
+                    const desc = document.getElementById('desc-hab').value;
+                    var tipo = '';
+                    
+                    if(document.getElementById('tipo-hab-indiv').checked == true){
+                        tipo = 'Individual'
+                    } else if(document.getElementById('tipo-hab-dual').checked == true){
+                        tipo = 'Dual'
+                    } else{
+                        tipo = 'Familiar'
+                    }
+
+                    await setDoc(doc(fs, 'habitaciones', `${hab}`), {
+                        tipo: tipo,
+                        precio: precio,
+                        desc: desc,
+                        disponibilidad: obtener_hab.data().disponibilidad
+                    });
+
+                    msgu.innerHTML = '<h1 class="success" >Se han actualizado los datos de la habitación</>';
+                    form.reset();
+                } catch (err){
+                    msgu.innerHTML = '<h1 class="error" >Hubo un error</>';
+                };
             });
 
         } else{
@@ -366,7 +451,7 @@ onAuthStateChanged(auth, async (user) => {
             const habitaciones = await getDocs(collection(fs, 'habitaciones'));
             const datos = await getDocs(collection(fs, 'reservas'));
             setupHabitaciones(habitaciones, datos);
-            logueado(navlogin, navregis, navcerrar);
+            logueado(navlogin, navcerrar);
     
             const datos_habitacion = document.querySelectorAll('a[id^="__"]');
             datos_habitacion.forEach((habitacion) => {
@@ -462,8 +547,6 @@ onAuthStateChanged(auth, async (user) => {
         </div>
         `;
         muestra_pantalla.innerHTML = div;
-        nologueado(navlogin, navregis, navcerrar);
-
-
+        nologueado(navlogin, navcerrar);
     }
 });
