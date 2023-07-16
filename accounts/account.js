@@ -110,11 +110,11 @@ const setupHabitaciones = (habitaciones, datos) => {
             var color;
             var imgurl;
             if(habitacionlist.disponibilidad == "Disponible"){
-                color = '#4BB543';
+                color = '#10d8029f';
             } else if(habitacionlist.disponibilidad == "Reservado"){
-                color = "#ff3333";
+                color = "#ff3333c5";
             } else{
-                color = "#ead61c";
+                color = "#ffe600a8";
             }
 
             if(habitacionlist.tipo == ""){
@@ -160,10 +160,10 @@ onAuthStateChanged(auth, async (user) => {
             <div style="width: 700px; margin: 20px" class="titulo-habitaciones">
                 <h3>Gestión de datos para Administradores</h3>
             </div>
-            <div class="contenedor">
-                <div class="rounded border-success" style="width: 450px; padding:10px; margin: 10px; border: 3px solid">
-                    <form id="register-y-update-user">
-                        <div class="contenedor">
+            <div class="contenedor2">
+                <div class="rounded border-success" style="width: 450px; height:500px; margin: 0 70px; padding:15px; border: 3px solid;">
+                    <form id="register-y-update-user" style="background-color: #ffffffb6;">
+                        <div class="" >
                             <h3>Administrar un usuario</h3>
                         </div>
                         <div style="padding-top: 20px">
@@ -188,15 +188,15 @@ onAuthStateChanged(auth, async (user) => {
                                 <label class="btn btn-outline-dark" for="btn-recep">Recepcionista</label>
                             </div>
                             <div style="width: 100%; padding-top:10px" class="contenedor">
-                                <button id="register-user" style="width: 47%; margin:3%" type="button" class="btn btn-success">Registrar</button>
-                                <button id="update-user" style="width: 47%"; margin:3%" type="button" class="btn btn-primary" disabled>Actualizar</button>
+                                <button id="register-user" style="width: 47%; margin: 60px 7px 0 0" type="button" class="btn btn-success">Registrar</button>
+                                <button id="update-user" style="width: 47%; margin: 60px 0 0 7px" type="button" class="btn btn-primary" disabled>Actualizar</button>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div class="rounded border-info" style="width: 450px; padding:10px; margin: 10px; border: 3px solid">
-                    <form id="register-y-update-hab">
-                        <div class="contenedor">
+                <div class="rounded border-info" style="width: 450px; padding:10px; margin: 0 70px; border: 3px solid">
+                    <form id="register-y-update-hab"  style="    background-color: #ffffffb6;">
+                        <div class="">
                             <h3>Administrar una habitación</h3>
                         </div>
                         <div style="padding-top: 20px">
@@ -516,30 +516,30 @@ onAuthStateChanged(auth, async (user) => {
                 Sección de administración
             </h1>
         </div>
-        <div class="descripcion p-3 bg-info bg-opacity-10 border border-info border-start-0 rounded-ends" id="principal" style="background-color: ">
+        <div class="" id="principal" style="background-color: ">
             <main class="menu-si">
                 <div class="card-si">
-                <img class="img-si" src="../img/icon_admin.svg" alt="">
-                <div class="card-content">
-                        <h2 class="h2-si">
-                            Recepcionista:
-                        </h2>
-                        <p class="p-si">
-                            Encargado de gestionar las habitaciones como personal de recepción presencialmente en el hotel mismo
-                        </p>
-                    </div>
+                    <img class="img-si" src="../img/icon_manager.svg" alt="">
+                    <div class="card-content">
+                            <h2 class="h2-si">
+                                Recepcionista:
+                            </h2>
+                            <p class="p-si">
+                                Encargado de gestionar las habitaciones como personal de recepción presencialmente en el hotel mismo
+                            </p>
+                        </div>
                 </div>
 
-                <div class="card-si">
-                <img class="img-sii" src="../img/icon_manager.svg" alt="">
-                <div class="card-content">
-                        <h2 class="h2-sii">
-                            Administrador:
-                        </h2>
-                        <p class="p-si">
-                        Tiene mas acceso a la misma pagina, teniendo control de crear nuevas cuentas con acceso y gestionar los empleados
-                        </p>
-                    </div>
+                <div class="card-si card-sii">
+                    <img class="img-sii" src="../img/icon_admin.svg" alt="">
+                    <div class="card-content">
+                            <h2 class="h2-sii">
+                                Administrador:
+                            </h2>
+                            <p class="p-si">
+                            Tiene mas acceso a la misma pagina, teniendo control de crear nuevas cuentas con acceso y gestionar los empleados
+                            </p>
+                        </div>
                 </div>
             </main>
         </div>

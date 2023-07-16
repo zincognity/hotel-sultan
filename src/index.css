@@ -132,13 +132,24 @@ img {
     margin-left: 20px;
 }
 
-.contenedor{
+.contenedor {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     position: relative;
+}
+
+.contenedor2{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    margin-bottom: 100px;
     /* height: 1000px;
     background-color: #232f4b;
     padding: 10px;
@@ -146,6 +157,10 @@ img {
     min-height: 585px;
     display: ; */
 }
+
+/* .contenedor2 {
+    display: flex;
+} */
 
 .titulo-habitaciones{
     text-align: center;
@@ -162,10 +177,9 @@ img {
     height: 300px;
     min-width: 300px;
     float: left;
-    margin: 20px;
+    margin: 20px 50px;
     border-radius: 10px;
     padding: 10px;  
-    cursor: pointer;
     font-family: 'Inter', sans-serif;
     place-content: center; 
     place-items: center;
@@ -183,6 +197,22 @@ img {
     max-height: 260px;
 }
 
+.text {
+    padding: 5px;
+}
+
+.text:hover {
+    color: #000;
+    /* background-color: #ffe600a8; */
+    padding: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+
 .img-habitaciones {
     margin-left: 50px;
     position: relative;
@@ -194,6 +224,16 @@ img {
     margin-top: 3px;
     /* border: 1px solid beige; */
 }
+
+.habitaciones-datos:hover .text {
+    border-bottom: 1px solid black;
+    background-color: rgba(250, 250, 250, 0.603);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+} 
 
 
 .habitaciones-datos:hover .img-habitaciones {
@@ -284,12 +324,12 @@ body {
 .nav {
     padding: 100px;
 }
+
 #principal {
-    border: 8px solid;
-    width: 700px;
+    /* border: 8px solid; */
+    width: 900px;
     align-items: center;
     height: 500px;
-    background-color: rgba(1, 128, 28, 0.788);
 }
 
 #principal h2 {
@@ -325,7 +365,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px;
+    padding: 35px 0; 
     font-family: 'Roboto', sans-serif;
     width: 100%;
 }
@@ -335,37 +375,56 @@ body {
 .card-si {
     width: 350px;
     height: 400px;
+    margin: 0 30px;
     border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
     position: relative;
     color: white;
+    z-index: 0;
+    background-color: rgba(45, 252, 80, 0.562);
     box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-sii{
+    background-color: rgba(255, 0, 0, 0.521);
 }
 
 .img-si {
     position: absolute;
     object-fit: cover;
-    width: 260px;
-    height: 240px;
-    top: 0;
-    left: 0;
+    z-index: 10;
+    background-color: #fff;
+    border: 1px solid black;
+    width: 250px;
+    height: 230px;
+    border-radius: 50%;
+    margin-top: 30px;
+    top: 10px;
+    left: 25px;
     opacity: 0.9;
+    font-size: 100px;
     transition: opacity .2s ease-out;
 }
 
 .img-sii {
     position: absolute;
     object-fit: cover;
-    width: 250px;
-    height: 220px;
+    background-color: #fff;
+    border: 1px solid black;
     border-radius: 50%;
-    margin-top: 30px;
-    top: 0;
-    left: 0;
+    width: 250px;
+    height: 230px;
+    top: 40px;
+    left: 35px;
     opacity: 0.9;
     transition: opacity .2s ease-out;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
+
 .h2-si, .h2-sii {
     position: absolute;
     inset: auto auto 30px 30px;
@@ -392,13 +451,34 @@ body {
     text-decoration: none;
 }
 
+.p-si {
+    top: 280px;
+}
+
+/* Estilos hover de las cartas de imangenes - inicio */
+/* cuadro recepcionista */
+.card-si:hover .img-si {
+  width: 200px;
+  height: 180px;
+  top: 0px;
+  left: 50px;
+}
+
 .card-si:hover .h2-si{
-    inset: auto auto 220px 30px;
+    inset: auto auto 135px 30px;
     transition: inset .3s ease-out;
 }
 
+/* Cuadro Administrador */
+.card-si:hover .img-sii {
+    width: 200px;
+    height: 180px;
+    top: 40px;
+    left: 55px;
+}
+
 .card-si:hover .h2-sii{
-    inset: auto auto 220px 30px;
+    inset: auto auto 135px 30px;
     transition: inset .3s ease-out;
 }
 
@@ -406,6 +486,13 @@ body {
     opacity: 1;
     transition: opacity .5s .1s ease-in;
 }
+
+
+
+/* .card-si:hover .p-si, .card-si:hover .a-si {
+    opacity: 1;
+    transition: opacity .5s .1s ease-in;
+} */
 
 .card-si:hover .img-si {
     transition: opacity .3s ease-in;
