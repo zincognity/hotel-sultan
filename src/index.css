@@ -14,6 +14,10 @@ body::-webkit-scrollbar-thumb {
     background: #fb5b23;
     border-radius: 10px;
     border-right: 2px solid #d8400e62;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
 .navbar {
@@ -192,7 +196,8 @@ img {
     display: flex;
     /* align-items: flex-end; */
     padding: 15px;
-    width: 380px;
+    min-width: 240px;
+    max-width: 380px;
     min-height: 220px;
     max-height: 260px;
 }
@@ -215,10 +220,18 @@ img {
 
 .img-habitaciones {
     margin-left: 50px;
-    position: relative;
-    right: 0;
-    /* justify-content: flex-end; */
+   
 }
+
+@media screen and (max-width: 767px) {
+    .img-habitaciones {
+        margin-left: 50px;
+        padding-bottom: 10px;
+        position: absolute;
+        right: 80px;
+        /* top: 100px; */
+    }
+  }
 
 .habitaciones-datos:hover .img-habitaciones {
     margin-top: 3px;
@@ -248,7 +261,6 @@ img {
     -webkit-animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite;
 }
-
 
 
 @keyframes img-habitaciones {  
@@ -368,6 +380,8 @@ body {
     padding: 35px 0; 
     font-family: 'Roboto', sans-serif;
     width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 
@@ -375,7 +389,7 @@ body {
 .card-si {
     width: 350px;
     height: 400px;
-    margin: 0 30px;
+    margin: 20px 30px;
     border-radius: 10px;
     overflow: hidden;
     cursor: pointer;

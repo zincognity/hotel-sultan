@@ -137,7 +137,7 @@ const setupHabitaciones = (habitaciones, datos) => {
                             <p>Descripción: ${habitacionlist.desc}</p>
                             <p>Estado: ${habitacionlist.disponibilidad}</p>
                         </div>
-                        <div>
+                        <div class="aasd">
                             <img class="img-habitaciones asd1" src="${imgurl}" alt="">
                         </div>
                     </div>
@@ -161,7 +161,7 @@ onAuthStateChanged(auth, async (user) => {
                 <h3>Gestión de datos para Administradores</h3>
             </div>
             <div class="contenedor2">
-                <div class="rounded border-success" style="width: 450px; height:500px; margin: 0 70px; padding:15px; border: 3px solid;">
+                <div class="rounded border-success" style="width: 450px; height:500px; margin: 20px 70px; padding:15px; border: 3px solid;">
                     <form id="register-y-update-user" style="background-color: #ffffffb6;">
                         <div class="" >
                             <h3>Administrar un usuario</h3>
